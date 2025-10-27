@@ -99,6 +99,40 @@ void main() {
       }
     });
 
+    test('Months and years', () {
+      {
+        final dur = Duration(days: 30);
+        expect(prettyDuration(dur, upperTersity: DurationTersity.month),
+            '1 month');
+      }
+
+      {
+        final dur = Duration(days: 45);
+        expect(prettyDuration(dur, upperTersity: DurationTersity.month),
+            '1 month 2 weeks 1 day');
+      }
+
+      {
+        final dur = Duration(days: 365);
+        expect(prettyDuration(dur, upperTersity: DurationTersity.year),
+            '1 year');
+      }
+
+      {
+        final dur = Duration(days: 400);
+        expect(prettyDuration(dur, upperTersity: DurationTersity.year),
+            '1 year 1 month 5 days');
+      }
+
+      {
+        final dur = Duration(days: 400);
+        expect(
+            prettyDuration(dur,
+                abbreviated: true, upperTersity: DurationTersity.year),
+            '1y, 1mon, 5d');
+      }
+    });
+
     test('Abbreviated', () {
       {
         final dur = Duration(microseconds: 0);

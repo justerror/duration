@@ -1,6 +1,8 @@
 /// Enum used to control tersity of [prettyDuration].
 enum DurationTersity {
-  week(1),
+  year(1),
+  month(12),
+  week(4),
   day(7),
   hour(24),
   minute(60),
@@ -25,9 +27,15 @@ enum DurationTersity {
 
 extension DurExt on Duration {
   int get inWeeks => inDays ~/ 7;
+  int get inMonths => inDays ~/ 30;
+  int get inYears => inDays ~/ 365;
 
   int inUnit(DurationTersity unit) {
     switch (unit) {
+      case DurationTersity.year:
+        return inYears;
+      case DurationTersity.month:
+        return inMonths;
       case DurationTersity.week:
         return inWeeks;
       case DurationTersity.day:
