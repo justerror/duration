@@ -2,7 +2,7 @@
 enum DurationTersity {
   year(1),
   month(12),
-  week(4),
+  week(5),
   day(7),
   hour(24),
   minute(60),
@@ -28,7 +28,7 @@ enum DurationTersity {
 extension DurExt on Duration {
   int get inWeeks => inDays ~/ 7;
   int get inMonths => inDays ~/ 30;
-  int get inYears => inDays ~/ 365;
+  int get inYears => inDays ~/ 360;
 
   int inUnit(DurationTersity unit) {
     switch (unit) {
